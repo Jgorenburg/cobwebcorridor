@@ -11,11 +11,11 @@ class Image {
     }
 }
 
-image1 = new Image("t1", "/images/_DSC1185.jpg")
+image1 = new Image("t1", "/images/scratch/_DSC1185.jpg")
 image2 = new Image("t2", "https://static.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg")
 images = [image1, image2]
 
-router.get('/trout', function (req, res, next) {
+router.get('/scratch/trout', function (req, res, next) {
 
     res.render('photography/template', {
         title: "Trout",
@@ -24,7 +24,7 @@ router.get('/trout', function (req, res, next) {
     console.log(appRoot.toString())
 });
 
-router.get('/cod', function (req, res, next) {
+router.get('/scratch/cod', function (req, res, next) {
     console.log(req.path)
 
     fs.readdir(path.join(appRoot.toString(), '/public/images', req.path), (err, files) => {
@@ -42,7 +42,7 @@ router.get('/cod', function (req, res, next) {
     });
 });
 
-router.get('/ayo', function (req, res, next) {
+router.get('/scratch/ayo', function (req, res, next) {
     console.log(req.path)
 
     files = fs.readdirSync(path.join(appRoot.toString(), '/public/images', req.path))

@@ -5,8 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var fishRouter = require('./routes/fish')
+var photoRouter = require('./routes/photo');
+var usersRouter = require('./routes/scratch/users');
+var fishRouter = require('./routes/scratch/fish')
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/photos', photoRouter);
 app.use('/users', usersRouter);
 app.use('/fish', fishRouter);
 
