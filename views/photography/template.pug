@@ -1,0 +1,11 @@
+doctype html
+html 
+    head 
+        link(rel='stylesheet', href='/stylesheets/gallery.css')
+    body
+        h1 #{title}
+        .container
+            each photo in album
+                img(alt=photo.alt, src=photo.src)
+           
+    footer Created with ❤️ by Gideon 
