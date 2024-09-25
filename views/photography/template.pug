@@ -6,6 +6,49 @@ html
         h1 #{title}
         .container
             each photo in album
-                img(alt=photo.alt, src=photo.src)
-           
+                img.photo(alt=photo.alt, src=photo.src)
+
+        #imageModal.modal
+            span.close &times;
+            .modal-content
+                img#modalImage.modal-image(src="", alt="Modal Image")
+
+        script. 
+            document.addEventListener('DOMContentLoaded', function () {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const closeBtn = document.getElementsByClassName('close')[0];
+                const photos = document.getElementsByClassName('photo');
+
+                for (let photo of photos) {
+                    photo.onclick = function () {
+                        if (modal.style.display = "none") {
+                            modal.style.display = "block";
+                            modalImg.src = this.src.replace('100/100', '800/600');
+                            modalImg.alt = this.alt;
+                        }
+                        else {
+                            modal.style.display = "none";
+                        }
+                    }
+                }
+
+                closeBtn.onclick = function () {
+                    modal.style.display = "none";
+                }
+
+                modalImg.onclick = function() {
+                    event.stopPropagation();
+                    modal.style.display = "none";
+                }
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            });
+
     footer Created with ❤️ by Gideon 
+
+
