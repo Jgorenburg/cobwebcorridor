@@ -1,0 +1,54 @@
+html 
+    head 
+        link(rel='stylesheet', href='/stylesheets/gallery.css')
+    body
+        h1 Photography
+        a(href="/photos/occasions/iceland") 
+        .container
+            h2 Occasions 
+            .photostrip
+                each album in occasions
+                     a(style="color: inherit; text-decoration: inherit;" href="/photos/occasions/" + album.title) 
+                        .album
+                            img(alt=album.title, src=album.thumbnail.src, title=album.title)
+                            h3 #{album.title}
+        .container
+            h2 Styles
+            .photostrip
+                each album in styles
+                    a(style="color: inherit; text-decoration: inherit;" href="/photos/techniques/" + album.title) 
+                        .album
+                            img(alt=album.title, src=album.thumbnail.src, title=album.title)
+                            h3 #{album.title}
+        script.
+            function scaleFontToFit() {
+                const titles = document.querySelectorAll('.album h3');
+                titles.forEach(title => {
+                    const container = title.parentElement;
+                    const availableHeight = container.clientHeight - container.querySelector('img').clientHeight;
+                    const availableWidth = container.clientWidth;
+
+                    console.log(title)
+
+                    // Start with a small font size
+                    let fontSize = 1;
+                    title.style.fontSize = `${fontSize}px`;
+
+                    // Increase font size until it no longer fits
+                    while (
+                        title.scrollWidth <= availableWidth &&
+                        title.scrollHeight <= availableHeight &&
+                        fontSize < 100  // Set a maximum font size if needed
+                    ) {
+                        fontSize++;
+                        title.style.fontSize = `${fontSize}px`;
+                    }
+                    // Step back one size to ensure it fits
+                    title.style.fontSize = `${fontSize - 1}px`;
+                });
+            }
+
+            // Run on load and resize
+            window.addEventListener('load', scaleFontToFit);
+            window.addEventListener('resize', scaleFontToFit); 
+                

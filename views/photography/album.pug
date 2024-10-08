@@ -1,12 +1,12 @@
 doctype html
 html 
     head 
-        link(rel='stylesheet', href='/stylesheets/gallery.css')
+        link(rel='stylesheet', href='/stylesheets/album.css')
     body
         h1 #{title}
         .container
             each photo in album
-                img.photo(alt=photo.alt, src=photo.src)
+                img.photo(alt=photo.alt, src=photo.src, title=photo.alt)
 
         #imageModal.modal
             span.close &times;
