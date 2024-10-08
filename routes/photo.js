@@ -13,8 +13,9 @@ class Image {
 }
 
 class Album {
-    constructor(folder, image) {
+    constructor(folder, name, image) {
         this.title = folder
+        this.name = name
         this.thumbnail = image
     }
 }
@@ -59,14 +60,14 @@ router.get('/*', function (req, res) {
     fs.readdirSync(path.join(appRoot.toString(), '/public/images/occasions')).forEach(album => {
         const images = fs.readdirSync(path.join(appRoot.toString(), '/public/images/occasions', album));
         const image = makeImage(images[0], path.join("/occasions", album));
-        occasions.push(new Album(album.replaceAll(constant.SPACE_EQUIVILANTS, " "), image));
+        occasions.push(new Album(album, album.replaceAll(constant.SPACE_EQUIVILANTS, " "), image));
     });
 
 
     fs.readdirSync(path.join(appRoot.toString(), '/public/images/techniques')).forEach(album => {
         const images = fs.readdirSync(path.join(appRoot.toString(), '/public/images/techniques', album));
         const image = makeImage(images[0], path.join("/techniques", album));
-        styles.push(new Album(album.replaceAll(constant.SPACE_EQUIVILANTS, " "), image));
+        styles.push(new Album(album, album.replaceAll(constant.SPACE_EQUIVILANTS, " "), image));
     });
 
     // console.log(occasions)

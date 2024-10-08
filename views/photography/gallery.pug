@@ -10,16 +10,16 @@ html
                 each album in occasions
                      a(style="color: inherit; text-decoration: inherit;" href="/photos/occasions/" + album.title) 
                         .album
-                            img(alt=album.title, src=album.thumbnail.src, title=album.title)
-                            h3 #{album.title}
+                            img(alt=album.name, src=album.thumbnail.src, title=album.name)
+                            h3 #{album.name}
         .container
             h2 Styles
             .photostrip
                 each album in styles
                     a(style="color: inherit; text-decoration: inherit;" href="/photos/techniques/" + album.title) 
                         .album
-                            img(alt=album.title, src=album.thumbnail.src, title=album.title)
-                            h3 #{album.title}
+                            img(alt=album.name, src=album.thumbnail.src, title=album.name)
+                            h3 #{album.name}
         script.
             function scaleFontToFit() {
                 const titles = document.querySelectorAll('.album h3');
